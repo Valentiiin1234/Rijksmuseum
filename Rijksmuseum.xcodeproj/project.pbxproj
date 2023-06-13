@@ -7,21 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043B78172A2A1838003D1AE7 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B78162A2A1838003D1AE7 /* StartViewController.swift */; };
 		048002EE2A2657E600170403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048002ED2A2657E600170403 /* AppDelegate.swift */; };
 		048002F02A2657E600170403 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048002EF2A2657E600170403 /* SceneDelegate.swift */; };
-		048002F22A2657E600170403 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048002F12A2657E600170403 /* ViewController.swift */; };
 		048002F72A2657E900170403 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 048002F62A2657E900170403 /* Assets.xcassets */; };
 		048002FA2A2657E900170403 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048002F82A2657E900170403 /* LaunchScreen.storyboard */; };
+		04B586212A2F2A20006D0C64 /* ModelMuseum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B586202A2F2A20006D0C64 /* ModelMuseum.swift */; };
+		04B586252A2F391E006D0C64 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B586242A2F391E006D0C64 /* NetworkManager.swift */; };
+		04E228ED2A2A4D0F00169F4F /* ArtObjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E228EC2A2A4D0F00169F4F /* ArtObjectTableViewCell.swift */; };
+		04FCA0882A37883200001BA7 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FCA0872A37883200001BA7 /* StartViewModel.swift */; };
+		04FCA08A2A378C0300001BA7 /* StartModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FCA0892A378C0300001BA7 /* StartModuleAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		043B78162A2A1838003D1AE7 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		048002EA2A2657E600170403 /* Rijksmuseum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rijksmuseum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048002ED2A2657E600170403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		048002EF2A2657E600170403 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		048002F12A2657E600170403 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		048002F62A2657E900170403 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		048002F92A2657E900170403 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		048002FB2A2657E900170403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		048002FB2A2657E900170403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Rijksmuseum/SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
+		04B586202A2F2A20006D0C64 /* ModelMuseum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMuseum.swift; sourceTree = "<group>"; };
+		04B586242A2F391E006D0C64 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		04E228EC2A2A4D0F00169F4F /* ArtObjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtObjectTableViewCell.swift; sourceTree = "<group>"; };
+		04FCA0872A37883200001BA7 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
+		04FCA0892A378C0300001BA7 /* StartModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartModuleAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +64,99 @@
 		048002EC2A2657E600170403 /* Rijksmuseum */ = {
 			isa = PBXGroup;
 			children = (
-				048002ED2A2657E600170403 /* AppDelegate.swift */,
-				048002EF2A2657E600170403 /* SceneDelegate.swift */,
-				048002F12A2657E600170403 /* ViewController.swift */,
-				048002F62A2657E900170403 /* Assets.xcassets */,
-				048002F82A2657E900170403 /* LaunchScreen.storyboard */,
-				048002FB2A2657E900170403 /* Info.plist */,
+				04FCA0802A37851400001BA7 /* ApplicationLayer */,
+				04FCA07B2A3783A000001BA7 /* StartModule */,
+				04FCA07D2A37840300001BA7 /* NetworkService */,
+				04FCA07F2A37849A00001BA7 /* Resources */,
+				04FCA0822A37855600001BA7 /* SupportingFiles */,
 			);
 			path = Rijksmuseum;
+			sourceTree = "<group>";
+		};
+		04FCA07B2A3783A000001BA7 /* StartModule */ = {
+			isa = PBXGroup;
+			children = (
+				04FCA0862A37868A00001BA7 /* Assembly */,
+				04FCA0852A37866700001BA7 /* Models */,
+				04FCA0842A37864000001BA7 /* View */,
+				04FCA07C2A3783B500001BA7 /* ViewModel */,
+			);
+			path = StartModule;
+			sourceTree = "<group>";
+		};
+		04FCA07C2A3783B500001BA7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				04FCA0872A37883200001BA7 /* StartViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		04FCA07D2A37840300001BA7 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				04FCA07E2A37844400001BA7 /* NetworkManager */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		04FCA07E2A37844400001BA7 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				04B586242A2F391E006D0C64 /* NetworkManager.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		04FCA07F2A37849A00001BA7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				048002F82A2657E900170403 /* LaunchScreen.storyboard */,
+				048002F62A2657E900170403 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		04FCA0802A37851400001BA7 /* ApplicationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				048002ED2A2657E600170403 /* AppDelegate.swift */,
+				048002EF2A2657E600170403 /* SceneDelegate.swift */,
+			);
+			path = ApplicationLayer;
+			sourceTree = "<group>";
+		};
+		04FCA0822A37855600001BA7 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				048002FB2A2657E900170403 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		04FCA0842A37864000001BA7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				043B78162A2A1838003D1AE7 /* StartViewController.swift */,
+				04E228EC2A2A4D0F00169F4F /* ArtObjectTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04FCA0852A37866700001BA7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				04B586202A2F2A20006D0C64 /* ModelMuseum.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		04FCA0862A37868A00001BA7 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				04FCA0892A378C0300001BA7 /* StartModuleAssembly.swift */,
+			);
+			path = Assembly;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,8 +229,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				048002F22A2657E600170403 /* ViewController.swift in Sources */,
+				04FCA08A2A378C0300001BA7 /* StartModuleAssembly.swift in Sources */,
+				04FCA0882A37883200001BA7 /* StartViewModel.swift in Sources */,
+				043B78172A2A1838003D1AE7 /* StartViewController.swift in Sources */,
 				048002EE2A2657E600170403 /* AppDelegate.swift in Sources */,
+				04B586252A2F391E006D0C64 /* NetworkManager.swift in Sources */,
+				04B586212A2F2A20006D0C64 /* ModelMuseum.swift in Sources */,
+				04E228ED2A2A4D0F00169F4F /* ArtObjectTableViewCell.swift in Sources */,
 				048002F02A2657E600170403 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,7 +377,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J2838ZD25V;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Rijksmuseum/Info.plist;
+				INFOPLIST_FILE = Rijksmuseum/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -308,7 +408,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J2838ZD25V;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Rijksmuseum/Info.plist;
+				INFOPLIST_FILE = Rijksmuseum/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
