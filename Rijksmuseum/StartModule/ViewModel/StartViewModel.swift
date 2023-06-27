@@ -8,29 +8,24 @@
 import Foundation
 import UIKit
 
-class StartViewModel {
+class StartViewModel: StartViewOutput {
     
-    
-    
-    weak var view: StartViewController!
+    weak var view: StartViewInput?
     
     func viewDidLoad() {
         
         let endpoint = ArtObjectListAPIEndpoint(numberPage: 1)
-        // активити инликатор
         
         NetworkManager.shared.fetch(Query.self, from: endpoint) {[weak self] result in
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 switch result {
                 case .success(let info):
-                    self?.view.objects = info.artObjects
-                    self?.view.display()
+                    self?.view?.display(objects: info.artObjects)
                 case .failure(let error):
-                    self?.view.displayError()
+                    self?.view?.displayError()
                     print(error.localizedDescription)
                 }
             }
         }
-    }
-    
+    }  
 }

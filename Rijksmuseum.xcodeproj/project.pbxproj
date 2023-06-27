@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		043B78172A2A1838003D1AE7 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B78162A2A1838003D1AE7 /* StartViewController.swift */; };
+		04411A8B2A4849E800D7D628 /* StartViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04411A8A2A4849E800D7D628 /* StartViewInput.swift */; };
+		04411A8D2A484A0000D7D628 /* StartViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04411A8C2A484A0000D7D628 /* StartViewOutput.swift */; };
 		048002EE2A2657E600170403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048002ED2A2657E600170403 /* AppDelegate.swift */; };
 		048002F02A2657E600170403 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048002EF2A2657E600170403 /* SceneDelegate.swift */; };
 		048002F72A2657E900170403 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 048002F62A2657E900170403 /* Assets.xcassets */; };
 		048002FA2A2657E900170403 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048002F82A2657E900170403 /* LaunchScreen.storyboard */; };
 		04B586212A2F2A20006D0C64 /* ModelMuseum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B586202A2F2A20006D0C64 /* ModelMuseum.swift */; };
 		04B586252A2F391E006D0C64 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B586242A2F391E006D0C64 /* NetworkManager.swift */; };
+		04C2F0352A4ACF5B00E3FB45 /* StartErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2F0342A4ACF5B00E3FB45 /* StartErrorView.swift */; };
+		04C2F03B2A4AE78300E3FB45 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 04C2F03A2A4AE78300E3FB45 /* Kingfisher */; };
 		04E228ED2A2A4D0F00169F4F /* ArtObjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E228EC2A2A4D0F00169F4F /* ArtObjectTableViewCell.swift */; };
 		04FCA0882A37883200001BA7 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FCA0872A37883200001BA7 /* StartViewModel.swift */; };
 		04FCA08A2A378C0300001BA7 /* StartModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FCA0892A378C0300001BA7 /* StartModuleAssembly.swift */; };
@@ -21,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		043B78162A2A1838003D1AE7 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		04411A8A2A4849E800D7D628 /* StartViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewInput.swift; sourceTree = "<group>"; };
+		04411A8C2A484A0000D7D628 /* StartViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewOutput.swift; sourceTree = "<group>"; };
 		048002EA2A2657E600170403 /* Rijksmuseum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rijksmuseum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048002ED2A2657E600170403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		048002EF2A2657E600170403 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,6 +35,7 @@
 		048002FB2A2657E900170403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Rijksmuseum/SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
 		04B586202A2F2A20006D0C64 /* ModelMuseum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMuseum.swift; sourceTree = "<group>"; };
 		04B586242A2F391E006D0C64 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		04C2F0342A4ACF5B00E3FB45 /* StartErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartErrorView.swift; sourceTree = "<group>"; };
 		04E228EC2A2A4D0F00169F4F /* ArtObjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtObjectTableViewCell.swift; sourceTree = "<group>"; };
 		04FCA0872A37883200001BA7 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
 		04FCA0892A378C0300001BA7 /* StartModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartModuleAssembly.swift; sourceTree = "<group>"; };
@@ -39,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C2F03B2A4AE78300E3FB45 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +58,7 @@
 			children = (
 				048002EC2A2657E600170403 /* Rijksmuseum */,
 				048002EB2A2657E600170403 /* Products */,
+				04C2F0392A4AE78300E3FB45 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +80,22 @@
 				04FCA0822A37855600001BA7 /* SupportingFiles */,
 			);
 			path = Rijksmuseum;
+			sourceTree = "<group>";
+		};
+		04C2F0332A4ACEF700E3FB45 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				04E228EC2A2A4D0F00169F4F /* ArtObjectTableViewCell.swift */,
+				04C2F0342A4ACF5B00E3FB45 /* StartErrorView.swift */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
+		04C2F0392A4AE78300E3FB45 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		04FCA07B2A3783A000001BA7 /* StartModule */ = {
@@ -137,8 +162,10 @@
 		04FCA0842A37864000001BA7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				04411A8A2A4849E800D7D628 /* StartViewInput.swift */,
+				04411A8C2A484A0000D7D628 /* StartViewOutput.swift */,
 				043B78162A2A1838003D1AE7 /* StartViewController.swift */,
-				04E228EC2A2A4D0F00169F4F /* ArtObjectTableViewCell.swift */,
+				04C2F0332A4ACEF700E3FB45 /* Subview */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -175,6 +202,9 @@
 			dependencies = (
 			);
 			name = Rijksmuseum;
+			packageProductDependencies = (
+				04C2F03A2A4AE78300E3FB45 /* Kingfisher */,
+			);
 			productName = Rijksmuseum;
 			productReference = 048002EA2A2657E600170403 /* Rijksmuseum.app */;
 			productType = "com.apple.product-type.application";
@@ -203,6 +233,9 @@
 				Base,
 			);
 			mainGroup = 048002E12A2657E600170403;
+			packageReferences = (
+				04C2F0362A4AE6D300E3FB45 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 048002EB2A2657E600170403 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,8 +266,11 @@
 				04FCA0882A37883200001BA7 /* StartViewModel.swift in Sources */,
 				043B78172A2A1838003D1AE7 /* StartViewController.swift in Sources */,
 				048002EE2A2657E600170403 /* AppDelegate.swift in Sources */,
+				04411A8D2A484A0000D7D628 /* StartViewOutput.swift in Sources */,
 				04B586252A2F391E006D0C64 /* NetworkManager.swift in Sources */,
+				04C2F0352A4ACF5B00E3FB45 /* StartErrorView.swift in Sources */,
 				04B586212A2F2A20006D0C64 /* ModelMuseum.swift in Sources */,
+				04411A8B2A4849E800D7D628 /* StartViewInput.swift in Sources */,
 				04E228ED2A2A4D0F00169F4F /* ArtObjectTableViewCell.swift in Sources */,
 				048002F02A2657E600170403 /* SceneDelegate.swift in Sources */,
 			);
@@ -452,6 +488,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04C2F0362A4AE6D300E3FB45 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04C2F03A2A4AE78300E3FB45 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04C2F0362A4AE6D300E3FB45 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 048002E22A2657E600170403 /* Project object */;
 }

@@ -9,17 +9,16 @@ import UIKit
 
 class StartViewController: UIViewController {
     
-    let viewModel: StartViewModel!
+    private let viewModel: StartViewOutput
     
-    var tableView = UITableView()
-    var objects: [ArtObject] = []
-    var activity = UIActivityIndicatorView()
+    private var tableView = UITableView()
+    private var objects: [ArtObject] = []
+    private var activity = UIActivityIndicatorView()
+    private var errorView = StartErrorView()
     
-    var imageError = UIImageView()
-    var buttonError = UIButton()
+    // MARK: - Life Cycle
     
-    
-    init(viewModel: StartViewModel) {
+    init(viewModel: StartViewOutput) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -30,57 +29,33 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(activity)
-        activity.startAnimating()
-        tableView.isHidden = true
-        configureTableView()
-        tableView.backgroundColor = .purple
-        viewModel.viewDidLoad()
-   
-    }
-    
-    // MARK: - Confifgure TableView
-    func configureTableView() {
-        
-        view.addSubview(tableView)
+        setupUI()
         setupConstraints()
-        setTableViewDelegates()
-        tableView.rowHeight = 100
-        tableView.register(ArtObjectTableViewCell.self, forCellReuseIdentifier:"ArtObjectTableViewCell")
+        setupActions()
         
-        
+        viewModel.viewDidLoad()
     }
     
-    // MARK: - Data and Source TableView
-    func setTableViewDelegates() {
+    // MARK: - Private Methods
+    
+    private func setupUI() {
+        view.addSubview(activity)
+        view.addSubview(tableView)
+        view.addSubview(errorView)
+        
         tableView.delegate = self
         tableView.dataSource = self
-    }
-}
-
-extension StartViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        objects.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ArtObjectTableViewCell", for: indexPath)
-        let object = objects[indexPath.row]
+        tableView.rowHeight = 100
+        tableView.backgroundColor = .purple
+        tableView.register(ArtObjectTableViewCell.self, forCellReuseIdentifier:"ArtObjectTableViewCell")
         
-        var content = cell.defaultContentConfiguration()
-        content.text = object.title
-        content.secondaryText = object.principalOrFirstMaker
-        content.image = UIImage(systemName: "camera.on.rectangle")
-        content.imageProperties.reservedLayoutSize.height = 80
-        content.imageProperties.reservedLayoutSize.width = 80
-        
-        cell.contentConfiguration = content
-        
-        return cell
+        tableView.isHidden = true
+        errorView.isHidden = true
+        activity.isHidden = true
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
@@ -91,75 +66,58 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
         activity.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activity.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
+        errorView.translatesAutoresizingMaskIntoConstraints = false
+        errorView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        errorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        errorView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        errorView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+    }
+    
+    private func setupActions(){
         
         
     }
 }
 
-extension StartViewController {
+// MARK: - UITableViewDelegate & UITableViewDataSource
+
+extension StartViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        objects.count
+    }
     
-    func display() {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        activity.stopAnimating()
-        activity.isHidden = true// вывести необходимую вью
-        
+        guard
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "ArtObjectTableViewCell",
+                for: indexPath
+            ) as? ArtObjectTableViewCell
+        else {
+            return UITableViewCell()
+        }
+        let object = objects[indexPath.row]
+        cell.configure(with: object)
+        return cell
+    }
+}
+// MARK: - StartViewInput
+
+extension StartViewController: StartViewInput {
+    
+    func display(objects: [ArtObject]) {
+        self.objects = objects
         tableView.isHidden = false
         tableView.reloadData()
-   
     }
     
     func displayError() {
-        setErrorDisplay()
-        activity.stopAnimating()
-        activity.isHidden = true
-        tableView.isHidden = true
-        view.backgroundColor = .black
-    }
-    
-    func setErrorDisplay() {
-        view.addSubview(imageError)
-        view.addSubview(buttonError)
-        setConstraintsErrorDisplay()
+        errorView.isHidden = false
         
-        imageError.image = UIImage(systemName: "play.slash.fill")
-        buttonError.tintColor = .purple
     }
     
-    
-    func setConstraintsErrorDisplay(){
-        imageError.translatesAutoresizingMaskIntoConstraints = false
-        imageError.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        imageError.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        imageError.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        imageError.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    func displayLoading() {
         
-        buttonError.translatesAutoresizingMaskIntoConstraints = false
-        buttonError.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 16).isActive = true
-        buttonError.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 16).isActive = true
-        buttonError.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-        buttonError.widthAnchor.constraint(equalToConstant: 30).isActive = true
-  
     }
-
-    //    func fetchObjects(){
-    //
-    //        let endpoint = ArtObjectListAPIEndpoint(numberPage: 1)
-    //        // активити инликатор
-    //
-    //
-    //        NetworkManager.shared.fetch(Query.self, from: endpoint) {[weak self] result in
-    //
-    //            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-    //                switch result {
-    //                case .success(let info):
-    //                    self?.objects = info.artObjects
-    //                    self?.tableView.isHidden = false
-    //                    self?.tableView.reloadData()
-    //                case .failure(let error):
-    //                    self?.tableView.isHidden = true
-    //                    print(error.localizedDescription)
-    //                }
-    //            }
-    //        }
-    //    }
 }
+
