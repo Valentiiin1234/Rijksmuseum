@@ -25,7 +25,7 @@ class StartViewModel: StartViewOutput {
 
 extension StartViewModel{
     
-    @objc func query(){
+    func query(){
         
         let endpoint = ArtObjectListAPIEndpoint(numberPage: 1)
         

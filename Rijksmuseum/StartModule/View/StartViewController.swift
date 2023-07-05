@@ -17,9 +17,11 @@ class StartViewController: UIViewController {
     private var errorView = StartErrorView()
     private var footer = UIView()
     private var loadButton = UIButton()
-    private var numberPage = 1
-
-    
+    private var page: Int = 1 {
+        willSet(newPage) {
+            print("\(newPage)")
+        }
+    }
     // MARK: - Life Cycle
     
     init(viewModel: StartViewOutput) {
@@ -47,14 +49,14 @@ class StartViewController: UIViewController {
         view.addSubview(tableView)
         view.addSubview(errorView)
         footer.addSubview(loadButton)
-    
+        
         tableView.tableFooterView = footer
         footer.backgroundColor = .white
         footer.frame.size.height = 60
         footer.frame.size.width = view.frame.size.width
         
         loadButton.setTitle("LOAD MORE", for: .normal)
-        loadButton.setTitle("Loading...", for: .highlighted)
+        
         loadButton.backgroundColor = .blue
         loadButton.layer.cornerRadius = 15
         loadButton.setTitleColor(.white, for: .normal)
@@ -93,7 +95,7 @@ class StartViewController: UIViewController {
         loadButton.centerYAnchor.constraint(equalTo: footer.centerYAnchor).isActive = true
         loadButton.rightAnchor.constraint(equalTo: footer.rightAnchor, constant: -80).isActive = true
         loadButton.leftAnchor.constraint(equalTo: footer.leftAnchor, constant: 80).isActive = true
-       
+        
     }
     
     private func setupActions(){
@@ -107,6 +109,24 @@ class StartViewController: UIViewController {
     }
     
     @objc func onTapLoadButton(){
+        loadButton.setTitle("Loading...", for: .normal)
+        page += 1
+        let endpoint = ArtObjectListAPIEndpoint(numberPage: page)
+        
+        NetworkManager.shared.fetch(Query.self, from: endpoint) {[weak self] result in
+            DispatchQueue.main.async { [weak self] in
+                switch result {
+                case .success(let info):
+                    
+                    self?.objects.insert(contentsOf: info.artObjects, at: self!.objects.endIndex)
+                    self?.display(objects: self!.objects)
+                    self?.loadButton.setTitle("LOAD MORE", for: .normal)
+                case .failure(let error):
+                    self?.displayError()
+                    print(error.localizedDescription)
+                }
+            }
+        }
         
     }
 }
