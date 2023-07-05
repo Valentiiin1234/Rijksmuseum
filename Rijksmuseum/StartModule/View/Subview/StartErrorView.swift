@@ -34,8 +34,11 @@ extension StartErrorView {
         
         imageError.image = UIImage(systemName: "play.slash.fill")
         
+        buttonError.backgroundColor = .blue
+        buttonError.layer.cornerRadius = 15
         buttonError.setTitle("RELOAD", for: .normal)
-        buttonError.setTitleColor(.red, for: .normal)
+        buttonError.setTitleColor(.white, for: .normal)
+        
         
     }
     
@@ -55,11 +58,8 @@ extension StartErrorView {
     }
     
     private func setupActions() {
-        buttonError.addTarget(self, action: #selector(onTap), for: .touchUpInside)
+       
     }
-    
-    @objc func onTap(completion: () -> ()){
-        
-    }
+
 }
 

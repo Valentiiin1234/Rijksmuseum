@@ -9,6 +9,7 @@ import Foundation
 
 protocol StartViewOutput {
     
-    func viewDidLoad()
+    func readyToDisplay()
+    func reloadData()
     
 }

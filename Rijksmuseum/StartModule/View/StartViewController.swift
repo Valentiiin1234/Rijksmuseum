@@ -15,6 +15,10 @@ class StartViewController: UIViewController {
     private var objects: [ArtObject] = []
     private var activity = UIActivityIndicatorView()
     private var errorView = StartErrorView()
+    private var footer = UIView()
+    private var loadButton = UIButton()
+    private var numberPage = 1
+
     
     // MARK: - Life Cycle
     
@@ -33,7 +37,7 @@ class StartViewController: UIViewController {
         setupConstraints()
         setupActions()
         
-        viewModel.viewDidLoad()
+        viewModel.readyToDisplay()
     }
     
     // MARK: - Private Methods
@@ -42,6 +46,18 @@ class StartViewController: UIViewController {
         view.addSubview(activity)
         view.addSubview(tableView)
         view.addSubview(errorView)
+        footer.addSubview(loadButton)
+    
+        tableView.tableFooterView = footer
+        footer.backgroundColor = .white
+        footer.frame.size.height = 60
+        footer.frame.size.width = view.frame.size.width
+        
+        loadButton.setTitle("LOAD MORE", for: .normal)
+        loadButton.setTitle("Loading...", for: .highlighted)
+        loadButton.backgroundColor = .blue
+        loadButton.layer.cornerRadius = 15
+        loadButton.setTitleColor(.white, for: .normal)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -71,10 +87,26 @@ class StartViewController: UIViewController {
         errorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         errorView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         errorView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        
+        loadButton.translatesAutoresizingMaskIntoConstraints = false
+        loadButton.centerXAnchor.constraint(equalTo: footer.centerXAnchor).isActive = true
+        loadButton.centerYAnchor.constraint(equalTo: footer.centerYAnchor).isActive = true
+        loadButton.rightAnchor.constraint(equalTo: footer.rightAnchor, constant: -80).isActive = true
+        loadButton.leftAnchor.constraint(equalTo: footer.leftAnchor, constant: 80).isActive = true
+       
     }
     
     private func setupActions(){
         
+        errorView.buttonError.addTarget(self, action: #selector(onTap), for: .touchUpInside)
+        loadButton.addTarget(self, action: #selector(onTapLoadButton), for: .touchUpInside)
+    }
+    
+    @objc func onTap(){
+        viewModel.reloadData()
+    }
+    
+    @objc func onTapLoadButton(){
         
     }
 }
@@ -106,18 +138,27 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
 extension StartViewController: StartViewInput {
     
     func display(objects: [ArtObject]) {
+        errorView.isHidden = true
+        activity.stopAnimating()
+        activity.isHidden = true
         self.objects = objects
         tableView.isHidden = false
         tableView.reloadData()
     }
     
     func displayError() {
+        activity.stopAnimating()
+        tableView.isHidden = true
+        activity.isHidden = true
         errorView.isHidden = false
         
     }
     
     func displayLoading() {
-        
+        tableView.isHidden = true
+        errorView.isHidden = true
+        activity.isHidden = false
+        activity.startAnimating()
     }
 }
 

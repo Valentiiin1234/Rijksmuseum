@@ -12,7 +12,20 @@ class StartViewModel: StartViewOutput {
     
     weak var view: StartViewInput?
     
-    func viewDidLoad() {
+    func reloadData() {
+        view?.displayLoading()
+        query()
+    }
+    
+    func readyToDisplay() {
+        view?.displayLoading()
+        query()
+    }
+}
+
+extension StartViewModel{
+    
+    @objc func query(){
         
         let endpoint = ArtObjectListAPIEndpoint(numberPage: 1)
         
@@ -27,5 +40,5 @@ class StartViewModel: StartViewOutput {
                 }
             }
         }
-    }  
+    }
 }
