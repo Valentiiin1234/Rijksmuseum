@@ -29,7 +29,8 @@ class ArtObjectTableViewCell: UITableViewCell {
         
         
         let url = URL(string: "\(object.webImage.url)")
-        let processor = DownsamplingImageProcessor(size: artImageView.bounds.size)
+        let processor = DownsamplingImageProcessor(size: CGSize(width: 80, height: 80))
+        
         artImageView.kf.indicatorType = .activity
         artImageView.kf.setImage(
             with: url,
@@ -37,7 +38,7 @@ class ArtObjectTableViewCell: UITableViewCell {
             options: [
                 .processor(processor),
                 .scaleFactor(UIScreen.main.scale),
-                .transition(.fade(1)),
+                .transition(.fade(0.2)),
                 .cacheOriginalImage
             ])
         {
@@ -46,7 +47,7 @@ class ArtObjectTableViewCell: UITableViewCell {
             case .success(let value):
                 print("Task done for: \(value.source.url?.absoluteString ?? "")")
             case .failure(let error):
-                print("Job failed: \(error.localizedDescription)")
+                print("Job failed: \(error)")
             }
         }
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042F92BE2A65414500B07309 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F92BD2A65414500B07309 /* FooterView.swift */; };
 		043B78172A2A1838003D1AE7 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B78162A2A1838003D1AE7 /* StartViewController.swift */; };
 		04411A8B2A4849E800D7D628 /* StartViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04411A8A2A4849E800D7D628 /* StartViewInput.swift */; };
 		04411A8D2A484A0000D7D628 /* StartViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04411A8C2A484A0000D7D628 /* StartViewOutput.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		042F92BD2A65414500B07309 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		043B78162A2A1838003D1AE7 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		04411A8A2A4849E800D7D628 /* StartViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewInput.swift; sourceTree = "<group>"; };
 		04411A8C2A484A0000D7D628 /* StartViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewOutput.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			children = (
 				04E228EC2A2A4D0F00169F4F /* ArtObjectTableViewCell.swift */,
 				04C2F0342A4ACF5B00E3FB45 /* StartErrorView.swift */,
+				042F92BD2A65414500B07309 /* FooterView.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				04C2F0352A4ACF5B00E3FB45 /* StartErrorView.swift in Sources */,
 				04B586212A2F2A20006D0C64 /* ModelMuseum.swift in Sources */,
 				04411A8B2A4849E800D7D628 /* StartViewInput.swift in Sources */,
+				042F92BE2A65414500B07309 /* FooterView.swift in Sources */,
 				04E228ED2A2A4D0F00169F4F /* ArtObjectTableViewCell.swift in Sources */,
 				048002F02A2657E600170403 /* SceneDelegate.swift in Sources */,
 			);

@@ -11,5 +11,6 @@ protocol StartViewOutput {
     
     func readyToDisplay()
     func reloadData()
-    
+    func loadNextPage()
+
 }

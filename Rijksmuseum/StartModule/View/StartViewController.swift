@@ -6,27 +6,31 @@
 //
 
 import UIKit
+protocol FooterViewDeleagte:AnyObject {
+    func noData()
+}
 
-class StartViewController: UIViewController {
+class StartViewController: UIViewController, FooterViewDeleagte {
+    func noData() {
+        footerView.noData()
+    }
     
+
     private let viewModel: StartViewOutput
-    
+
     private var tableView = UITableView()
     private var objects: [ArtObject] = []
+    private var newObjects: [ArtObject] = []
     private var activity = UIActivityIndicatorView()
     private var errorView = StartErrorView()
-    private var footer = UIView()
-    private var loadButton = UIButton()
-    private var page: Int = 1 {
-        willSet(newPage) {
-            print("\(newPage)")
-        }
-    }
+    private var footerView = FooterView()
+    
     // MARK: - Life Cycle
     
     init(viewModel: StartViewOutput) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -38,8 +42,10 @@ class StartViewController: UIViewController {
         setupUI()
         setupConstraints()
         setupActions()
-        
         viewModel.readyToDisplay()
+        
+        footerView.delegate = self
+        
     }
     
     // MARK: - Private Methods
@@ -48,25 +54,17 @@ class StartViewController: UIViewController {
         view.addSubview(activity)
         view.addSubview(tableView)
         view.addSubview(errorView)
-        footer.addSubview(loadButton)
         
-        tableView.tableFooterView = footer
-        footer.backgroundColor = .white
-        footer.frame.size.height = 60
-        footer.frame.size.width = view.frame.size.width
-        
-        loadButton.setTitle("LOAD MORE", for: .normal)
-        
-        loadButton.backgroundColor = .blue
-        loadButton.layer.cornerRadius = 15
-        loadButton.setTitleColor(.white, for: .normal)
+        tableView.tableFooterView = footerView
         
         tableView.delegate = self
         tableView.dataSource = self
         
+        
         tableView.rowHeight = 100
         tableView.backgroundColor = .purple
         tableView.register(ArtObjectTableViewCell.self, forCellReuseIdentifier:"ArtObjectTableViewCell")
+        tableView.separatorColor = .systemBlue
         
         tableView.isHidden = true
         errorView.isHidden = true
@@ -89,45 +87,16 @@ class StartViewController: UIViewController {
         errorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         errorView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         errorView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-        
-        loadButton.translatesAutoresizingMaskIntoConstraints = false
-        loadButton.centerXAnchor.constraint(equalTo: footer.centerXAnchor).isActive = true
-        loadButton.centerYAnchor.constraint(equalTo: footer.centerYAnchor).isActive = true
-        loadButton.rightAnchor.constraint(equalTo: footer.rightAnchor, constant: -80).isActive = true
-        loadButton.leftAnchor.constraint(equalTo: footer.leftAnchor, constant: 80).isActive = true
-        
     }
     
     private func setupActions(){
-        
-        errorView.buttonError.addTarget(self, action: #selector(onTap), for: .touchUpInside)
-        loadButton.addTarget(self, action: #selector(onTapLoadButton), for: .touchUpInside)
+        footerView.onTapLoad = {[weak self] in
+            self?.viewModel.loadNextPage()
+        }
     }
     
     @objc func onTap(){
         viewModel.reloadData()
-    }
-    
-    @objc func onTapLoadButton(){
-        loadButton.setTitle("Loading...", for: .normal)
-        page += 1
-        let endpoint = ArtObjectListAPIEndpoint(numberPage: page)
-        
-        NetworkManager.shared.fetch(Query.self, from: endpoint) {[weak self] result in
-            DispatchQueue.main.async { [weak self] in
-                switch result {
-                case .success(let info):
-                    
-                    self?.objects.insert(contentsOf: info.artObjects, at: self!.objects.endIndex)
-                    self?.display(objects: self!.objects)
-                    self?.loadButton.setTitle("LOAD MORE", for: .normal)
-                case .failure(let error):
-                    self?.displayError()
-                    print(error.localizedDescription)
-                }
-            }
-        }
-        
     }
 }
 
@@ -171,7 +140,6 @@ extension StartViewController: StartViewInput {
         tableView.isHidden = true
         activity.isHidden = true
         errorView.isHidden = false
-        
     }
     
     func displayLoading() {
@@ -180,5 +148,11 @@ extension StartViewController: StartViewInput {
         activity.isHidden = false
         activity.startAnimating()
     }
+    func newObjects(newObjets: [ArtObject]) {
+        self.newObjects = newObjets
+        self.objects.insert(contentsOf: newObjets, at: objects.endIndex)
+        tableView.reloadData()
+    }
 }
+
 
