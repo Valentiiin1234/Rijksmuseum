@@ -10,6 +10,7 @@ import UIKit
 
 class StartViewModel: StartViewOutput {
     
+    private let maxPages: Int = 10
     
     weak var view: StartViewInput?
     
@@ -40,17 +41,32 @@ class StartViewModel: StartViewOutput {
     }
     
     func loadNextPage(){
+        let nextPageNumber = addOnePage()
         
-        let endpoint = ArtObjectListAPIEndpoint(numberPage: addOnePage())
+        guard nextPageNumber <= maxPages else {
+            view?.noNextPagesForLoading()
+            return
+        }
+        
+        let endpoint = ArtObjectListAPIEndpoint(numberPage: nextPageNumber)
     
         NetworkManager.shared.fetch(Query.self, from: endpoint) { [weak self] result in
             DispatchQueue.main.async { [weak self] in
                 switch result{
                 case .success(let info):
                     print(endpoint)
-                    self?.view?.newObjects(newObjets: info.artObjects)
+                    self?.view?.displayNextPage(objets: info.artObjects)
+                    
+                    if info.artObjects.count < .artObjectsPerPage {
+                        self?.view?.noNextPagesForLoading()
+                    }
+                    
+                    if nextPageNumber == self?.maxPages {
+                        self?.view?.noNextPagesForLoading()
+                    }
                 case .failure(let error):
                     self?.page -= 1
+                    self?.view?.displayErrorOnLoadNextPage()
                     print(error.localizedDescription)
                 }
             }

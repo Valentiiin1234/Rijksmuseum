@@ -77,10 +77,16 @@ struct ArtObjectListAPIEndpoint: APIEndpoint {
     var method = "GET"
     var parameters: [String : String]
     
-    init(numberPage: Int, objectsCount: Int = 50) {
+    init(numberPage: Int, objectsCount: Int = .artObjectsPerPage) {
         parameters = [
             "ps" : "\(objectsCount)",
             "p" : "\(numberPage)"
         ]
     }
+}
+
+extension Int {
+    
+    static let artObjectsPerPage: Int = 50
+    
 }

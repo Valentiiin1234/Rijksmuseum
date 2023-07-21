@@ -6,15 +6,8 @@
 //
 
 import UIKit
-protocol FooterViewDeleagte:AnyObject {
-    func noData()
-}
 
-class StartViewController: UIViewController, FooterViewDeleagte {
-    func noData() {
-        footerView.noData()
-    }
-    
+class StartViewController: UIViewController {
 
     private let viewModel: StartViewOutput
 
@@ -39,13 +32,12 @@ class StartViewController: UIViewController, FooterViewDeleagte {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupUI()
         setupConstraints()
         setupActions()
+        
         viewModel.readyToDisplay()
-        
-        footerView.delegate = self
-        
     }
     
     // MARK: - Private Methods
@@ -59,7 +51,6 @@ class StartViewController: UIViewController, FooterViewDeleagte {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
         
         tableView.rowHeight = 100
         tableView.backgroundColor = .purple
@@ -91,11 +82,14 @@ class StartViewController: UIViewController, FooterViewDeleagte {
     
     private func setupActions(){
         footerView.onTapLoad = {[weak self] in
+            self?.footerView.state = .loading
             self?.viewModel.loadNextPage()
         }
+        
+        errorView.buttonError.addTarget(self, action: #selector(onTapRetry), for: .touchUpInside)
     }
     
-    @objc func onTap(){
+    @objc func onTapRetry(){
         viewModel.reloadData()
     }
 }
@@ -148,10 +142,22 @@ extension StartViewController: StartViewInput {
         activity.isHidden = false
         activity.startAnimating()
     }
-    func newObjects(newObjets: [ArtObject]) {
-        self.newObjects = newObjets
-        self.objects.insert(contentsOf: newObjets, at: objects.endIndex)
+    
+    func displayNextPage(objets: [ArtObject]) {
+        self.newObjects = objets
+        
+        self.objects.insert(contentsOf: objets, at: objects.endIndex)
         tableView.reloadData()
+        
+        footerView.state = .loadMore
+    }
+    
+    func displayErrorOnLoadNextPage() {
+        footerView.state = .loadMore
+    }
+    
+    func noNextPagesForLoading() {
+        footerView.state = .noData
     }
 }
 
