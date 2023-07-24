@@ -12,5 +12,10 @@ protocol StartViewInput: AnyObject {
     func display(objects: [ArtObject])
     func displayError()
     func displayLoading()
-    func newObjects(newObjets: [ArtObject])
+    
+    func displayNextPage(objets: [ArtObject])
+    func displayErrorOnLoadNextPage()
+    
+    func noNextPagesForLoading()
+   
 }

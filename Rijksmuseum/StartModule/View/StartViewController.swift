@@ -6,15 +6,9 @@
 //
 
 import UIKit
-protocol FooterViewDeleagte:AnyObject {
-    func noData()
-}
 
-class StartViewController: UIViewController, FooterViewDeleagte {
-    func noData() {
-        footerView.noData()
-    }
-    
+
+class StartViewController: UIViewController {
 
     private let viewModel: StartViewOutput
 
@@ -44,7 +38,7 @@ class StartViewController: UIViewController, FooterViewDeleagte {
         setupActions()
         viewModel.readyToDisplay()
         
-        footerView.delegate = self
+        
         
     }
     
@@ -148,10 +142,27 @@ extension StartViewController: StartViewInput {
         activity.isHidden = false
         activity.startAnimating()
     }
-    func newObjects(newObjets: [ArtObject]) {
-        self.newObjects = newObjets
-        self.objects.insert(contentsOf: newObjets, at: objects.endIndex)
+    func newObjects(objects: [ArtObject]) {
+        self.newObjects = objects
+        self.objects.insert(contentsOf: objects, at: objects.endIndex)
         tableView.reloadData()
+    }
+    
+    func displayNextPage(objets: [ArtObject]) {
+        self.newObjects = objets
+        
+        self.objects.insert(contentsOf: objets, at: objects.endIndex)
+        tableView.reloadData()
+        
+        footerView.state = .loadMore
+    }
+    
+    func displayErrorOnLoadNextPage() {
+        footerView.state = .loadMore
+    }
+    
+    func noNextPagesForLoading() {
+        footerView.state = .noData
     }
 }
 
