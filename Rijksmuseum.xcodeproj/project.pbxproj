@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040BC5142A6E727700CA6EB9 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BC5132A6E727700CA6EB9 /* DetailsViewController.swift */; };
+		040BC5162A6E72BB00CA6EB9 /* DetailsViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BC5152A6E72BB00CA6EB9 /* DetailsViewOutput.swift */; };
+		040BC5182A6E72E600CA6EB9 /* DetailsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BC5172A6E72E600CA6EB9 /* DetailsViewInput.swift */; };
+		040BC51A2A6E733800CA6EB9 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BC5192A6E733800CA6EB9 /* DetailsViewModel.swift */; };
+		040BC51D2A6E762100CA6EB9 /* DetailsModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BC51C2A6E762100CA6EB9 /* DetailsModuleAssembly.swift */; };
+		040BC51F2A6E7A9600CA6EB9 /* ModelQueryOfDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BC51E2A6E7A9600CA6EB9 /* ModelQueryOfDetails.swift */; };
 		042F92BE2A65414500B07309 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F92BD2A65414500B07309 /* FooterView.swift */; };
 		043B78172A2A1838003D1AE7 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B78162A2A1838003D1AE7 /* StartViewController.swift */; };
 		04411A8B2A4849E800D7D628 /* StartViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04411A8A2A4849E800D7D628 /* StartViewInput.swift */; };
@@ -25,6 +31,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040BC5132A6E727700CA6EB9 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		040BC5152A6E72BB00CA6EB9 /* DetailsViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewOutput.swift; sourceTree = "<group>"; };
+		040BC5172A6E72E600CA6EB9 /* DetailsViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewInput.swift; sourceTree = "<group>"; };
+		040BC5192A6E733800CA6EB9 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		040BC51C2A6E762100CA6EB9 /* DetailsModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModuleAssembly.swift; sourceTree = "<group>"; };
+		040BC51E2A6E7A9600CA6EB9 /* ModelQueryOfDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelQueryOfDetails.swift; sourceTree = "<group>"; };
 		042F92BD2A65414500B07309 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		043B78162A2A1838003D1AE7 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		04411A8A2A4849E800D7D628 /* StartViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewInput.swift; sourceTree = "<group>"; };
@@ -55,11 +67,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040BC50D2A6E6C0400CA6EB9 /* ModelsLayer */ = {
+			isa = PBXGroup;
+			children = (
+				04FCA0852A37866700001BA7 /* Models */,
+			);
+			path = ModelsLayer;
+			sourceTree = "<group>";
+		};
+		040BC50E2A6E6C5D00CA6EB9 /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				040BC51B2A6E757F00CA6EB9 /* Modules */,
+			);
+			path = PresentationLayer;
+			sourceTree = "<group>";
+		};
+		040BC50F2A6E6CB500CA6EB9 /* DetailsModule */ = {
+			isa = PBXGroup;
+			children = (
+				040BC5102A6E6CD200CA6EB9 /* Assembly */,
+				040BC5112A6E6CE000CA6EB9 /* View */,
+				040BC5122A6E6CE700CA6EB9 /* ViewModel */,
+			);
+			path = DetailsModule;
+			sourceTree = "<group>";
+		};
+		040BC5102A6E6CD200CA6EB9 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				040BC51C2A6E762100CA6EB9 /* DetailsModuleAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		040BC5112A6E6CE000CA6EB9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				040BC5172A6E72E600CA6EB9 /* DetailsViewInput.swift */,
+				040BC5152A6E72BB00CA6EB9 /* DetailsViewOutput.swift */,
+				040BC5132A6E727700CA6EB9 /* DetailsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		040BC5122A6E6CE700CA6EB9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				040BC5192A6E733800CA6EB9 /* DetailsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		040BC51B2A6E757F00CA6EB9 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				04FCA07B2A3783A000001BA7 /* StartModule */,
+				040BC50F2A6E6CB500CA6EB9 /* DetailsModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		048002E12A2657E600170403 = {
 			isa = PBXGroup;
 			children = (
 				048002EC2A2657E600170403 /* Rijksmuseum */,
-				048002EB2A2657E600170403 /* Products */,
 				04C2F0392A4AE78300E3FB45 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -70,16 +142,18 @@
 				048002EA2A2657E600170403 /* Rijksmuseum.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		048002EC2A2657E600170403 /* Rijksmuseum */ = {
 			isa = PBXGroup;
 			children = (
+				040BC50E2A6E6C5D00CA6EB9 /* PresentationLayer */,
 				04FCA0802A37851400001BA7 /* ApplicationLayer */,
-				04FCA07B2A3783A000001BA7 /* StartModule */,
 				04FCA07D2A37840300001BA7 /* NetworkService */,
-				04FCA07F2A37849A00001BA7 /* Resources */,
 				04FCA0822A37855600001BA7 /* SupportingFiles */,
+				048002EB2A2657E600170403 /* Products */,
+				04FCA07F2A37849A00001BA7 /* Resources */,
 			);
 			path = Rijksmuseum;
 			sourceTree = "<group>";
@@ -105,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				04FCA0862A37868A00001BA7 /* Assembly */,
-				04FCA0852A37866700001BA7 /* Models */,
 				04FCA0842A37864000001BA7 /* View */,
 				04FCA07C2A3783B500001BA7 /* ViewModel */,
 			);
@@ -123,6 +196,7 @@
 		04FCA07D2A37840300001BA7 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				040BC50D2A6E6C0400CA6EB9 /* ModelsLayer */,
 				04FCA07E2A37844400001BA7 /* NetworkManager */,
 			);
 			path = NetworkService;
@@ -177,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				04B586202A2F2A20006D0C64 /* ModelMuseum.swift */,
+				040BC51E2A6E7A9600CA6EB9 /* ModelQueryOfDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -268,6 +343,7 @@
 				04FCA08A2A378C0300001BA7 /* StartModuleAssembly.swift in Sources */,
 				04FCA0882A37883200001BA7 /* StartViewModel.swift in Sources */,
 				043B78172A2A1838003D1AE7 /* StartViewController.swift in Sources */,
+				040BC51A2A6E733800CA6EB9 /* DetailsViewModel.swift in Sources */,
 				048002EE2A2657E600170403 /* AppDelegate.swift in Sources */,
 				04411A8D2A484A0000D7D628 /* StartViewOutput.swift in Sources */,
 				04B586252A2F391E006D0C64 /* NetworkManager.swift in Sources */,
@@ -275,8 +351,13 @@
 				04B586212A2F2A20006D0C64 /* ModelMuseum.swift in Sources */,
 				04411A8B2A4849E800D7D628 /* StartViewInput.swift in Sources */,
 				042F92BE2A65414500B07309 /* FooterView.swift in Sources */,
+				040BC5162A6E72BB00CA6EB9 /* DetailsViewOutput.swift in Sources */,
+				040BC51F2A6E7A9600CA6EB9 /* ModelQueryOfDetails.swift in Sources */,
 				04E228ED2A2A4D0F00169F4F /* ArtObjectTableViewCell.swift in Sources */,
+				040BC5142A6E727700CA6EB9 /* DetailsViewController.swift in Sources */,
+				040BC5182A6E72E600CA6EB9 /* DetailsViewInput.swift in Sources */,
 				048002F02A2657E600170403 /* SceneDelegate.swift in Sources */,
+				040BC51D2A6E762100CA6EB9 /* DetailsModuleAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

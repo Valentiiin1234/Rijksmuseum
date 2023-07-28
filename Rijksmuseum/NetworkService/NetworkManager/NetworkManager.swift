@@ -90,3 +90,5 @@ extension Int {
     static let artObjectsPerPage: Int = 50
     
 }
+
+

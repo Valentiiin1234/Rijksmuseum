@@ -36,24 +36,20 @@ class StartViewController: UIViewController {
         setupUI()
         setupConstraints()
         setupActions()
-        viewModel.readyToDisplay()
-        
-        
-        
+        viewModel.readyToDisplay()  
     }
     
     // MARK: - Private Methods
-    
     private func setupUI() {
         view.addSubview(activity)
         view.addSubview(tableView)
         view.addSubview(errorView)
+        navigationController?.title = "hello"
         
         tableView.tableFooterView = footerView
         
         tableView.delegate = self
         tableView.dataSource = self
-        
         
         tableView.rowHeight = 100
         tableView.backgroundColor = .purple
@@ -95,7 +91,6 @@ class StartViewController: UIViewController {
 }
 
 // MARK: - UITableViewDelegate & UITableViewDataSource
-
 extension StartViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         objects.count
@@ -114,6 +109,11 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
         let object = objects[indexPath.row]
         cell.configure(with: object)
         return cell
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        #warning("с навигацией между экранами запутался")
+        
     }
 }
 // MARK: - StartViewInput
@@ -148,10 +148,10 @@ extension StartViewController: StartViewInput {
         tableView.reloadData()
     }
     
-    func displayNextPage(objets: [ArtObject]) {
-        self.newObjects = objets
+    func displayNextPage(objects: [ArtObject]) {
+        self.newObjects = objects
         
-        self.objects.insert(contentsOf: objets, at: objects.endIndex)
+        self.objects.insert(contentsOf: objects, at: objects.endIndex)
         tableView.reloadData()
         
         footerView.state = .loadMore

@@ -29,6 +29,8 @@ class StartViewModel: StartViewOutput {
         self.page = newPage
         return page
     }
+    
+  
  
     func readyToDisplay() {
         view?.displayLoading()
@@ -56,7 +58,7 @@ class StartViewModel: StartViewOutput {
                 switch result{
                 case .success(let info):
                     print(endpoint)
-                    self?.view?.displayNextPage(objets: info.artObjects)
+                    self?.view?.displayNextPage(objects: info.artObjects)
                     
                     if info.artObjects.count < .artObjectsPerPage {
                         self?.view?.noNextPagesForLoading()
