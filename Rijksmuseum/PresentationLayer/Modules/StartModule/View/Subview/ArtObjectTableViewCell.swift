@@ -50,7 +50,7 @@ class ArtObjectTableViewCell: UITableViewCell {
                 print("Job failed: \(error)")
             }
         }
-    }
+   }
 }
 
 // MARK: - setupUI & setupConstraints

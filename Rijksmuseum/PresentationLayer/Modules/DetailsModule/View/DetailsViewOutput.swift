@@ -8,5 +8,5 @@
 import Foundation
 
 protocol DetailsViewOutput {
-    
+    func readyToDisplay()
 }

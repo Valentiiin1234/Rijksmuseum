@@ -4,7 +4,7 @@
 //
 //  Created by Mac on 24.07.2023.
 //
-
+import Kingfisher
 import UIKit
 
 class DetailsViewController: UIViewController {
@@ -28,6 +28,8 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         setupUI()
         setupConstraints()
+        
+        viewModelDeatails.readyToDisplay()
     }
     
     private func setupUI(){
@@ -37,14 +39,12 @@ class DetailsViewController: UIViewController {
         
         imageObject.image = UIImage(systemName: "lightbulb.circle.fill")
         view.backgroundColor = .white
-        imageObject.backgroundColor = .black
-        
-        titleLabel.text = "\(object.title)"
+        imageObject.backgroundColor = .systemGray2
+
         titleLabel.font = UIFont.systemFont(ofSize: 30)
         titleLabel.textAlignment = .center
         titleLabel.adjustsFontSizeToFitWidth = true
-        
-        detailsLabel.text = "\(object.principalOrFirstMaker)"
+
         detailsLabel.numberOfLines = 0
         detailsLabel.adjustsFontSizeToFitWidth = true
   
@@ -73,6 +73,16 @@ class DetailsViewController: UIViewController {
     }
 }
 extension DetailsViewController: DetailsViewInput {
+    func display(imageURL: String, tittle: String, info: String) {
+
+        let url = URL(string: imageURL)
+        imageObject.kf.setImage(with: url)
+        titleLabel.text = tittle
+    }
+
+    
+ 
+    
  
     
     

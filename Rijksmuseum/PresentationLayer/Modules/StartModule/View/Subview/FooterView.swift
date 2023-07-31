@@ -68,21 +68,17 @@ class FooterView: UIView {
         loadButton.translatesAutoresizingMaskIntoConstraints = false
         loadButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         loadButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        loadButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -80).isActive = true
-        loadButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 80).isActive = true
+        loadButton.widthAnchor.constraint(equalToConstant: 140).isActive = true
         
         loadingLabel.translatesAutoresizingMaskIntoConstraints = false
         loadingLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         loadingLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        loadingLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -80).isActive = true
-        loadingLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 80).isActive = true
+        loadingLabel.widthAnchor.constraint(equalToConstant: 140).isActive = true
         
         noDataLabel.translatesAutoresizingMaskIntoConstraints = false
         noDataLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         noDataLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        noDataLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -80).isActive = true
-        noDataLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 80).isActive = true
-        
+        noDataLabel.widthAnchor.constraint(equalToConstant: 140).isActive = true
     }
     
     func setupAction(){

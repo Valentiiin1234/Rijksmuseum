@@ -48,6 +48,8 @@ class StartViewController: UIViewController {
         
         tableView.tableFooterView = footerView
         
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -110,11 +112,12 @@ extension StartViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configure(with: object)
         return cell
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        #warning("с навигацией между экранами запутался")
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(DetailsModuleAssembly.buildModule(for: objects[indexPath.row]), animated: true)
         
     }
+
 }
 // MARK: - StartViewInput
 

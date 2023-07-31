@@ -10,9 +10,9 @@ import UIKit
 
 class DetailsModuleAssembly {
     
-    static func buildModule() -> UIViewController {
+    static func buildModule(for object: ArtObject) -> UIViewController {
 
-        let viewModel = DetailsViewModel()
+        let viewModel = DetailsViewModel(artObject: object)
         let view = DetailsViewController(viewModel: viewModel)
         viewModel.viewDetails = view
         

@@ -6,9 +6,19 @@
 //
 
 import Foundation
+import UIKit
 
 class DetailsViewModel: DetailsViewOutput {
     
-    weak var viewDetails: DetailsViewInput?
+    let artObject: ArtObject
     
+    weak var viewDetails: DetailsViewInput?
+    init(artObject: ArtObject) {
+        self.artObject = artObject
+        
+    }
+
+    func readyToDisplay() {
+        viewDetails?.display(imageURL: artObject.webImage.url, tittle: artObject.title, info: artObject.principalOrFirstMaker)
+    }
 }
