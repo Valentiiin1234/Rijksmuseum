@@ -44,17 +44,16 @@ class StartViewController: UIViewController {
         view.addSubview(activity)
         view.addSubview(tableView)
         view.addSubview(errorView)
-        navigationController?.title = "hello"
-        
+        title = "HELLO, RIJKSMUSEUM"
+        navigationController?.navigationBar.backgroundColor = .systemPurple
+        navigationItem.backButtonTitle = "back"
         tableView.tableFooterView = footerView
-        
-        
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.rowHeight = 100
-        tableView.backgroundColor = .purple
+        tableView.backgroundColor = .white
         tableView.register(ArtObjectTableViewCell.self, forCellReuseIdentifier:"ArtObjectTableViewCell")
         tableView.separatorColor = .systemBlue
         
@@ -67,8 +66,8 @@ class StartViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         activity.translatesAutoresizingMaskIntoConstraints = false
         activity.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -79,6 +78,7 @@ class StartViewController: UIViewController {
         errorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         errorView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         errorView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        
     }
     
     private func setupActions(){

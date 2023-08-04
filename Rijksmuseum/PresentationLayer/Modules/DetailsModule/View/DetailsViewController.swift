@@ -8,11 +8,14 @@ import Kingfisher
 import UIKit
 
 class DetailsViewController: UIViewController {
+    
+    private var scrollView = UIScrollView()
+    private var stackView = UIStackView()
     private var object: ArtObject!
     private var detailsLabel = UILabel()
     private var imageObject = UIImageView()
     private var titleLabel = UILabel()
-    
+
     private var viewModelDeatails: DetailsViewOutput
     
     init(viewModel: DetailsViewOutput) {
@@ -33,13 +36,19 @@ class DetailsViewController: UIViewController {
     }
     
     private func setupUI(){
-        view.addSubview(detailsLabel)
-        view.addSubview(imageObject)
-        view.addSubview(titleLabel)
+        view.addSubview(scrollView)
+        scrollView.addSubview(stackView)
+        
+        
+        stackView.axis = .vertical
+
+        stackView.addSubview(detailsLabel)
+        stackView.addSubview(imageObject)
+        stackView.addSubview(titleLabel)
         
         imageObject.image = UIImage(systemName: "lightbulb.circle.fill")
-        view.backgroundColor = .white
-        imageObject.backgroundColor = .systemGray2
+        view.backgroundColor = .systemPurple
+        imageObject.backgroundColor = .systemPurple
 
         titleLabel.font = UIFont.systemFont(ofSize: 30)
         titleLabel.textAlignment = .center
@@ -52,23 +61,37 @@ class DetailsViewController: UIViewController {
     
     private func setupConstraints(){
         
-        imageObject.translatesAutoresizingMaskIntoConstraints = false
-        imageObject.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-        imageObject.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-        imageObject.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
-        imageObject.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        scrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
+        
+        
+        
+        imageObject.translatesAutoresizingMaskIntoConstraints = false
+        imageObject.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 10).isActive = true
+        imageObject.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 10).isActive = true
+        imageObject.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -10).isActive = true
+        imageObject.heightAnchor.constraint(equalToConstant: 250).isActive = true
+
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.topAnchor.constraint(equalTo: imageObject.bottomAnchor, constant: 16).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: imageObject.bottomAnchor, constant: 10).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 10).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: 10).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: 80).isActive = true
 
         detailsLabel.translatesAutoresizingMaskIntoConstraints = false
         detailsLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
-        detailsLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-        detailsLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
-        detailsLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16).isActive = true
+        detailsLabel.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 10).isActive = true
+        detailsLabel.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -10).isActive = true
+        detailsLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -10).isActive = true
 
     }
 }

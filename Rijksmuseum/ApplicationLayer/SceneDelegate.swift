@@ -20,11 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let scene = (scene as? UIWindowScene) else { return }
         let navigationController = UINavigationController(
+            
             rootViewController: StartModuleAssembly.buildModule()
         )
-
         window = UIWindow(windowScene: scene)
-        window?.backgroundColor = .yellow
+        window?.backgroundColor = .systemPurple
         
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
