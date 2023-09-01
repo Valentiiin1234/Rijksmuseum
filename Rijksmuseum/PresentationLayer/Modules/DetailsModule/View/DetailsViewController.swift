@@ -42,9 +42,10 @@ class DetailsViewController: UIViewController {
  
         stackView.axis = .vertical
 
-        stackView.addSubview(detailsLabel)
-        stackView.addSubview(imageObject)
-        stackView.addSubview(titleLabel)
+        stackView.addArrangedSubview(imageObject)
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(detailsLabel)
+        stackView.spacing = 20
         
         imageObject.image = UIImage(systemName: "lightbulb.circle.fill")
         view.backgroundColor = .systemPurple
@@ -56,8 +57,8 @@ class DetailsViewController: UIViewController {
         titleLabel.adjustsFontSizeToFitWidth = true
 
         detailsLabel.numberOfLines = 0
-        detailsLabel.textAlignment = .center
-        detailsLabel.adjustsFontSizeToFitWidth = true
+        detailsLabel.textAlignment = .left
+        detailsLabel.adjustsFontSizeToFitWidth = false
     }
     
     private func setupConstraints(){
@@ -68,29 +69,16 @@ class DetailsViewController: UIViewController {
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         
+        
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
-        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
+        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
+        stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
+        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
   
         imageObject.translatesAutoresizingMaskIntoConstraints = false
-        imageObject.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 10).isActive = true
-        imageObject.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 10).isActive = true
-        imageObject.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -10).isActive = true
         imageObject.heightAnchor.constraint(equalToConstant: 250).isActive = true
-
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.topAnchor.constraint(equalTo: imageObject.bottomAnchor, constant: 10).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 10).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -10).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: 80).isActive = true
-
-        detailsLabel.translatesAutoresizingMaskIntoConstraints = false
-        detailsLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
-        detailsLabel.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 10).isActive = true
-        detailsLabel.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -10).isActive = true
-        detailsLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -10).isActive = true
     }
 }
 extension DetailsViewController: DetailsViewInput {
@@ -99,5 +87,7 @@ extension DetailsViewController: DetailsViewInput {
         let url = URL(string: imageURL)
         imageObject.kf.setImage(with: url)
         titleLabel.text = tittle
+        detailsLabel.text = info
+        
     }
 }

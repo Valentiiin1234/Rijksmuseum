@@ -84,6 +84,19 @@ struct ArtObjectListAPIEndpoint: APIEndpoint {
     }
 }
 
+struct ArtObjectDetails: APIEndpoint {
+    var method: String
+    
+    var parameters: [String : String]
+    
+    var path: String
+    init(id: String) {
+        self.path = "/collection/\(id)"
+        self.method = "GET"
+        self.parameters = [:]
+    }
+}
+
 extension Int {
     
     static let artObjectsPerPage: Int = 50
@@ -91,6 +104,8 @@ extension Int {
 }
 
 
-// https://www.rijksmuseum.nl/api/en/collection/SK-C-5?key=GDvO2VdC
+// https://www.rijksmuseum.nl/api/en/collection/SK-C-5?key=GDvO2VdC detail
+
+//https://www.rijksmuseum.nl/api/en/collection?key=GDvO2VdC&p=3&ps=50
 
 

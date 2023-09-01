@@ -10,4 +10,5 @@ import Foundation
 protocol DetailsViewOutput {
     func readyToDisplay()
     func queryDetails()
+    
 }

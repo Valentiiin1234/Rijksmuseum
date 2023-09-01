@@ -19,9 +19,21 @@ class DetailsViewModel: DetailsViewOutput {
     }
 
     func readyToDisplay() {
-        viewDetails?.display(imageURL: artObject.webImage.url, tittle: artObject.title, info: artObject.principalOrFirstMaker)
+        viewDetails?.display(imageURL: artObject.webImage.url, tittle: artObject.title, info: "")
     }
     func queryDetails() {
-        NetworkManager.shared.fetch(<#T##type: Decodable.Protocol##Decodable.Protocol#>, from: <#T##APIEndpoint#>, completion: <#T##(Result<Decodable, NetworkError>) -> Void#>)
+        let endpoint = ArtObjectDetails(id: artObject.objectNumber)
+        NetworkManager.shared.fetch(DetailsArtObject.self, from: endpoint) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                    
+                case .success(let info):
+                    self?.viewDetails?.display(imageURL: info.artObject.webImage.url, tittle: info.artObject.title, info: info.artObject.plaqueDescriptionEnglish)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            
+        }
     }
 }

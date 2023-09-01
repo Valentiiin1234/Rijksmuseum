@@ -51,7 +51,7 @@ class StartViewModel: StartViewOutput {
         
         let endpoint = ArtObjectListAPIEndpoint(numberPage: nextPageNumber)
     
-        NetworkManager.shared.fetch(Query.self, from: endpoint) { [weak self] result in
+        NetworkManager.shared.fetch(ArtObjectList.self, from: endpoint) { [weak self] result in
             DispatchQueue.main.async { [weak self] in
                 switch result{
                 case .success(let info):
@@ -80,7 +80,7 @@ extension StartViewModel{
         
         let endpoint = ArtObjectListAPIEndpoint(numberPage: 1)
         
-        NetworkManager.shared.fetch(Query.self, from: endpoint) {[weak self] result in
+        NetworkManager.shared.fetch(ArtObjectList.self, from: endpoint) {[weak self] result in
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 switch result {
                 case .success(let info):

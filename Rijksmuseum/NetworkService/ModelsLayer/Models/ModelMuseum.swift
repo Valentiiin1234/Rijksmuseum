@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Query: Decodable {
+struct ArtObjectList: Decodable {
     let artObjects: [ArtObject]
 }
 
