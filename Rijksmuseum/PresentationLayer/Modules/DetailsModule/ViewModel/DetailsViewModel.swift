@@ -21,4 +21,7 @@ class DetailsViewModel: DetailsViewOutput {
     func readyToDisplay() {
         viewDetails?.display(imageURL: artObject.webImage.url, tittle: artObject.title, info: artObject.principalOrFirstMaker)
     }
+    func queryDetails() {
+        NetworkManager.shared.fetch(<#T##type: Decodable.Protocol##Decodable.Protocol#>, from: <#T##APIEndpoint#>, completion: <#T##(Result<Decodable, NetworkError>) -> Void#>)
+    }
 }

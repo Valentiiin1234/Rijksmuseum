@@ -10,7 +10,7 @@ import UIKit
 
 class StartViewModel: StartViewOutput {
     
-    private let maxPages: Int = 10
+    private let maxPages: Int = 3
     
     weak var view: StartViewInput?
     
@@ -29,9 +29,7 @@ class StartViewModel: StartViewOutput {
         self.page = newPage
         return page
     }
-    
-  
- 
+
     func readyToDisplay() {
         view?.displayLoading()
         query()

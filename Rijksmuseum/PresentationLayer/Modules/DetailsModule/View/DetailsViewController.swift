@@ -33,13 +33,13 @@ class DetailsViewController: UIViewController {
         setupConstraints()
         
         viewModelDeatails.readyToDisplay()
+        viewModelDeatails.queryDetails()
     }
     
     private func setupUI(){
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
-        
-        
+ 
         stackView.axis = .vertical
 
         stackView.addSubview(detailsLabel)
@@ -50,13 +50,14 @@ class DetailsViewController: UIViewController {
         view.backgroundColor = .systemPurple
         imageObject.backgroundColor = .systemPurple
 
-        titleLabel.font = UIFont.systemFont(ofSize: 30)
+        //titleLabel.font = UIFont.systemFont(ofSize: 30)
+        titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
         titleLabel.adjustsFontSizeToFitWidth = true
 
         detailsLabel.numberOfLines = 0
+        detailsLabel.textAlignment = .center
         detailsLabel.adjustsFontSizeToFitWidth = true
-  
     }
     
     private func setupConstraints(){
@@ -72,9 +73,7 @@ class DetailsViewController: UIViewController {
         stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
         stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
-        
-        
-        
+  
         imageObject.translatesAutoresizingMaskIntoConstraints = false
         imageObject.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 10).isActive = true
         imageObject.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 10).isActive = true
@@ -84,7 +83,7 @@ class DetailsViewController: UIViewController {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: imageObject.bottomAnchor, constant: 10).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 10).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: 10).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -10).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 80).isActive = true
 
         detailsLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +91,6 @@ class DetailsViewController: UIViewController {
         detailsLabel.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 10).isActive = true
         detailsLabel.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: -10).isActive = true
         detailsLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -10).isActive = true
-
     }
 }
 extension DetailsViewController: DetailsViewInput {
@@ -102,11 +100,4 @@ extension DetailsViewController: DetailsViewInput {
         imageObject.kf.setImage(with: url)
         titleLabel.text = tittle
     }
-
-    
- 
-    
- 
-    
-    
 }

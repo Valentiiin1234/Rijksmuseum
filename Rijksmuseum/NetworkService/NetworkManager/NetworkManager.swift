@@ -28,7 +28,7 @@ class NetworkManager {
         let params = endpoint.parameters.map { key, value in
             "\(key)=\(value)"
         }
- 
+        
         //https://www.rijksmuseum.nl/api/en/collection?key=GDvO2VdC&p=3&ps=50
         let query = params.joined(separator: "&")
         
@@ -70,7 +70,6 @@ protocol APIEndpoint {
     
 }
 
-
 struct ArtObjectListAPIEndpoint: APIEndpoint {
     
     var path = "/collection"
@@ -90,5 +89,8 @@ extension Int {
     static let artObjectsPerPage: Int = 50
     
 }
+
+
+// https://www.rijksmuseum.nl/api/en/collection/SK-C-5?key=GDvO2VdC
 
 

@@ -61,6 +61,9 @@ extension ArtObjectTableViewCell {
         
         contentView.addSubview(artImageView)
         contentView.addSubview(artTitleLabel)
+        artTitleLabel.numberOfLines = 0
+        artTitleLabel.adjustsFontSizeToFitWidth = true
+        artTitleLabel.textAlignment = .left
         
     }
     

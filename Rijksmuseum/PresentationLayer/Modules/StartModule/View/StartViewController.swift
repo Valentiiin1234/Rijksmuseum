@@ -84,6 +84,7 @@ class StartViewController: UIViewController {
     private func setupActions(){
         footerView.onTapLoad = {[weak self] in
             self?.viewModel.loadNextPage()
+            self?.footerView.state = .loading
         }
     }
     
