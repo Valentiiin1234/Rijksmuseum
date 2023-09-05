@@ -14,7 +14,7 @@ class DetailsModuleAssembly {
 
         let viewModel = DetailsViewModel(artObject: object)
         let view = DetailsViewController(viewModel: viewModel)
-        viewModel.viewDetails = view
+        viewModel.view = view
         
         return view
     }

@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import UIKit
+
 
 protocol DetailsViewInput: AnyObject {
     func display(imageURL: String, tittle: String, info: String)
     
-
 }

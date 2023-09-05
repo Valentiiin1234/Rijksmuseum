@@ -12,16 +12,17 @@ class DetailsViewController: UIViewController {
     private var scrollView = UIScrollView()
     private var stackView = UIStackView()
     private var object: ArtObject!
+    private var imageURL: String!
+    
     private var detailsLabel = UILabel()
     private var imageObject = UIImageView()
     private var titleLabel = UILabel()
-
-    private var viewModelDeatails: DetailsViewOutput
+ 
+    private var viewModel: DetailsViewOutput
     
     init(viewModel: DetailsViewOutput) {
-        self.viewModelDeatails = viewModel
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -31,11 +32,11 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         setupUI()
         setupConstraints()
-        
-        viewModelDeatails.readyToDisplay()
-        viewModelDeatails.queryDetails()
+        setupAction()
+        viewModel.readyToDisplay()
+        viewModel.queryDetails()
     }
-    
+
     private func setupUI(){
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
@@ -46,19 +47,32 @@ class DetailsViewController: UIViewController {
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(detailsLabel)
         stackView.spacing = 20
-        
-        imageObject.image = UIImage(systemName: "lightbulb.circle.fill")
+
         view.backgroundColor = .systemPurple
         imageObject.backgroundColor = .systemPurple
 
-        //titleLabel.font = UIFont.systemFont(ofSize: 30)
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
-        titleLabel.adjustsFontSizeToFitWidth = true
-
+        titleLabel.adjustsFontSizeToFitWidth = false
+        
         detailsLabel.numberOfLines = 0
         detailsLabel.textAlignment = .left
         detailsLabel.adjustsFontSizeToFitWidth = false
+    }
+    
+    private func setupAction(){
+        imageObject.isUserInteractionEnabled = true
+        let singleTap = UITapGestureRecognizer()
+        singleTap.numberOfTapsRequired = 1
+        singleTap.addTarget(self, action: #selector(self.tapImage))
+        imageObject.addGestureRecognizer(singleTap)
+    }
+ 
+    
+    @objc func tapImage(){
+   
+        show(ZoomModuleAssembly.buildModule(for: imageURL), sender: self)
+        
     }
     
     private func setupConstraints(){
@@ -69,25 +83,24 @@ class DetailsViewController: UIViewController {
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         
-        
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
         stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-  
+        
         imageObject.translatesAutoresizingMaskIntoConstraints = false
         imageObject.heightAnchor.constraint(equalToConstant: 250).isActive = true
     }
 }
 extension DetailsViewController: DetailsViewInput {
     func display(imageURL: String, tittle: String, info: String) {
-
+        self.imageURL = imageURL
         let url = URL(string: imageURL)
         imageObject.kf.setImage(with: url)
         titleLabel.text = tittle
         detailsLabel.text = info
-        
-    }
+    } 
 }
+

@@ -21,6 +21,11 @@
 		048002F02A2657E600170403 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048002EF2A2657E600170403 /* SceneDelegate.swift */; };
 		048002F72A2657E900170403 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 048002F62A2657E900170403 /* Assets.xcassets */; };
 		048002FA2A2657E900170403 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048002F82A2657E900170403 /* LaunchScreen.storyboard */; };
+		04B0BEEC2AA4971D00898316 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BEEB2AA4971D00898316 /* ZoomViewController.swift */; };
+		04B0BEF22AA4989000898316 /* ZoomViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BEF12AA4989000898316 /* ZoomViewInput.swift */; };
+		04B0BEF42AA498A000898316 /* ZoomViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BEF32AA498A000898316 /* ZoomViewOutput.swift */; };
+		04B0BEF62AA498E100898316 /* ZoomModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BEF52AA498E100898316 /* ZoomModuleAssembly.swift */; };
+		04B0BEF82AA498F600898316 /* ZoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B0BEF72AA498F600898316 /* ZoomViewModel.swift */; };
 		04B586212A2F2A20006D0C64 /* ModelMuseum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B586202A2F2A20006D0C64 /* ModelMuseum.swift */; };
 		04B586252A2F391E006D0C64 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B586242A2F391E006D0C64 /* NetworkManager.swift */; };
 		04C2F0352A4ACF5B00E3FB45 /* StartErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C2F0342A4ACF5B00E3FB45 /* StartErrorView.swift */; };
@@ -47,6 +52,11 @@
 		048002F62A2657E900170403 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		048002F92A2657E900170403 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		048002FB2A2657E900170403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Rijksmuseum/SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
+		04B0BEEB2AA4971D00898316 /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
+		04B0BEF12AA4989000898316 /* ZoomViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewInput.swift; sourceTree = "<group>"; };
+		04B0BEF32AA498A000898316 /* ZoomViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewOutput.swift; sourceTree = "<group>"; };
+		04B0BEF52AA498E100898316 /* ZoomModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomModuleAssembly.swift; sourceTree = "<group>"; };
+		04B0BEF72AA498F600898316 /* ZoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewModel.swift; sourceTree = "<group>"; };
 		04B586202A2F2A20006D0C64 /* ModelMuseum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMuseum.swift; sourceTree = "<group>"; };
 		04B586242A2F391E006D0C64 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		04C2F0342A4ACF5B00E3FB45 /* StartErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartErrorView.swift; sourceTree = "<group>"; };
@@ -124,6 +134,7 @@
 			children = (
 				04FCA07B2A3783A000001BA7 /* StartModule */,
 				040BC50F2A6E6CB500CA6EB9 /* DetailsModule */,
+				04B0BEED2AA4972A00898316 /* ZoomModule */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -156,6 +167,42 @@
 				04FCA07F2A37849A00001BA7 /* Resources */,
 			);
 			path = Rijksmuseum;
+			sourceTree = "<group>";
+		};
+		04B0BEED2AA4972A00898316 /* ZoomModule */ = {
+			isa = PBXGroup;
+			children = (
+				04B0BEEF2AA4984400898316 /* Assembly */,
+				04B0BEEE2AA4983300898316 /* View */,
+				04B0BEF02AA4986100898316 /* ViewModel */,
+			);
+			path = ZoomModule;
+			sourceTree = "<group>";
+		};
+		04B0BEEE2AA4983300898316 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04B0BEF32AA498A000898316 /* ZoomViewOutput.swift */,
+				04B0BEF12AA4989000898316 /* ZoomViewInput.swift */,
+				04B0BEEB2AA4971D00898316 /* ZoomViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04B0BEEF2AA4984400898316 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				04B0BEF52AA498E100898316 /* ZoomModuleAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		04B0BEF02AA4986100898316 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				04B0BEF72AA498F600898316 /* ZoomViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		04C2F0332A4ACEF700E3FB45 /* Subview */ = {
@@ -343,12 +390,16 @@
 				04FCA08A2A378C0300001BA7 /* StartModuleAssembly.swift in Sources */,
 				04FCA0882A37883200001BA7 /* StartViewModel.swift in Sources */,
 				043B78172A2A1838003D1AE7 /* StartViewController.swift in Sources */,
+				04B0BEEC2AA4971D00898316 /* ZoomViewController.swift in Sources */,
+				04B0BEF62AA498E100898316 /* ZoomModuleAssembly.swift in Sources */,
 				040BC51A2A6E733800CA6EB9 /* DetailsViewModel.swift in Sources */,
 				048002EE2A2657E600170403 /* AppDelegate.swift in Sources */,
+				04B0BEF82AA498F600898316 /* ZoomViewModel.swift in Sources */,
 				04411A8D2A484A0000D7D628 /* StartViewOutput.swift in Sources */,
 				04B586252A2F391E006D0C64 /* NetworkManager.swift in Sources */,
 				04C2F0352A4ACF5B00E3FB45 /* StartErrorView.swift in Sources */,
 				04B586212A2F2A20006D0C64 /* ModelMuseum.swift in Sources */,
+				04B0BEF22AA4989000898316 /* ZoomViewInput.swift in Sources */,
 				04411A8B2A4849E800D7D628 /* StartViewInput.swift in Sources */,
 				042F92BE2A65414500B07309 /* FooterView.swift in Sources */,
 				040BC5162A6E72BB00CA6EB9 /* DetailsViewOutput.swift in Sources */,
@@ -357,6 +408,7 @@
 				040BC5142A6E727700CA6EB9 /* DetailsViewController.swift in Sources */,
 				040BC5182A6E72E600CA6EB9 /* DetailsViewInput.swift in Sources */,
 				048002F02A2657E600170403 /* SceneDelegate.swift in Sources */,
+				04B0BEF42AA498A000898316 /* ZoomViewOutput.swift in Sources */,
 				040BC51D2A6E762100CA6EB9 /* DetailsModuleAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

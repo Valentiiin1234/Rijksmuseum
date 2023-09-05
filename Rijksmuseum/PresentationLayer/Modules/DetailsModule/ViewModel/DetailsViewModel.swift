@@ -12,15 +12,18 @@ class DetailsViewModel: DetailsViewOutput {
     
     let artObject: ArtObject
     
-    weak var viewDetails: DetailsViewInput?
+    weak var view: DetailsViewInput?
+    
     init(artObject: ArtObject) {
-        self.artObject = artObject
-        
+        self.artObject = artObject   
     }
 
     func readyToDisplay() {
-        viewDetails?.display(imageURL: artObject.webImage.url, tittle: artObject.title, info: "")
+        view?.display(imageURL: artObject.webImage.url, tittle: artObject.title, info: "")
     }
+    
+    
+    
     func queryDetails() {
         let endpoint = ArtObjectDetails(id: artObject.objectNumber)
         NetworkManager.shared.fetch(DetailsArtObject.self, from: endpoint) { [weak self] result in
@@ -28,12 +31,11 @@ class DetailsViewModel: DetailsViewOutput {
                 switch result {
                     
                 case .success(let info):
-                    self?.viewDetails?.display(imageURL: info.artObject.webImage.url, tittle: info.artObject.title, info: info.artObject.plaqueDescriptionEnglish)
+                    self?.view?.display(imageURL: info.artObject.webImage.url, tittle: info.artObject.title, info: info.artObject.plaqueDescriptionEnglish )
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
             }
-            
         }
     }
 }
