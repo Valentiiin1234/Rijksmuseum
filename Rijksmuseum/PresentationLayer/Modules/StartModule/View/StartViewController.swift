@@ -45,7 +45,7 @@ class StartViewController: UIViewController {
         view.addSubview(tableView)
         view.addSubview(errorView)
         title = "HELLO, RIJKSMUSEUM"
-        navigationController?.navigationBar.backgroundColor = .systemPurple
+        navigationController?.navigationBar.backgroundColor = .white
         navigationItem.backButtonTitle = "back"
         tableView.tableFooterView = footerView
 

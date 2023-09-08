@@ -48,8 +48,8 @@ class DetailsViewController: UIViewController {
         stackView.addArrangedSubview(detailsLabel)
         stackView.spacing = 20
 
-        view.backgroundColor = .systemPurple
-        imageObject.backgroundColor = .systemPurple
+        view.backgroundColor = .white
+        imageObject.backgroundColor = .white
 
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
@@ -70,9 +70,7 @@ class DetailsViewController: UIViewController {
  
     
     @objc func tapImage(){
-   
-        show(ZoomModuleAssembly.buildModule(for: imageURL), sender: self)
-        
+        present(ZoomModuleAssembly.buildModule(for: imageURL), animated: true)
     }
     
     private func setupConstraints(){

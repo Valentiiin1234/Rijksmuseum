@@ -38,8 +38,7 @@ extension StartErrorView {
         buttonError.layer.cornerRadius = 15
         buttonError.setTitle("RELOAD", for: .normal)
         buttonError.setTitleColor(.white, for: .normal)
-        
-        
+ 
     }
     
     private func setupConstraints() {
