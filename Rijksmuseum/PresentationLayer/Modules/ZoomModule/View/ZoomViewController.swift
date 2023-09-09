@@ -9,12 +9,9 @@ import Foundation
 import Kingfisher
 import UIKit
 
-
 class ZoomViewController: UIViewController {
-    
-    
+
     private var scrollView = UIScrollView()
-    private var stackView = UIStackView()
     private let imageArt = UIImageView()
     private var buttonClose = UIButton()
     override var prefersStatusBarHidden: Bool {
@@ -41,10 +38,11 @@ class ZoomViewController: UIViewController {
         viewModel.readyDisplay()
     }
     
+    
+    
     private func setupUI(){
         view.addSubview(scrollView)
-        scrollView.addSubview(stackView)
-        stackView.addArrangedSubview(imageArt)
+        scrollView.addSubview(imageArt)
         view.addSubview(buttonClose)
         
         scrollView.delegate = self
@@ -54,37 +52,26 @@ class ZoomViewController: UIViewController {
         imageArt.contentMode = .scaleAspectFit
         buttonClose.setTitle("close", for: .normal)
         view.backgroundColor = .black
-        
-      
-        
     }
     
     private func setupConstraints(){
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        scrollView.widthAnchor.constraint(equalToConstant: view.bounds.width).isActive = true
-        scrollView.heightAnchor.constraint(equalToConstant: view.bounds.height).isActive = true
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
- 
-        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
-        stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
-        stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
+        scrollView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        scrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
         
         imageArt.translatesAutoresizingMaskIntoConstraints = false
-        imageArt.centerYAnchor.constraint(equalTo: stackView.centerYAnchor).isActive = true
-        imageArt.centerXAnchor.constraint(equalTo: stackView.centerXAnchor).isActive = true
-
-        imageArt.widthAnchor.constraint(equalToConstant: view.bounds.width).isActive = true
+        imageArt.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        imageArt.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
         
         buttonClose.translatesAutoresizingMaskIntoConstraints = false
         buttonClose.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
         buttonClose.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
-
     }
     private func setupActiion(){
         buttonClose.addTarget(self, action: #selector(closeZoomVC), for: .touchUpInside)
@@ -106,6 +93,26 @@ extension ZoomViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageArt
     }
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        
+        if scrollView.zoomScale > 1 {
+            if let image = imageArt.image {
+                let ratioW = imageArt.frame.width / image.size.width
+                let ratioH = imageArt.frame.height / image.size.height
+                
+                let ratio = ratioW < ratioH ? ratioW : ratioH
+                let newWidth = image.size.width * ratio
+                let newHeight = image.size.height * ratio
+                let conditionLeft = newWidth*scrollView.zoomScale > imageArt.frame.width
+                let left = 0.5 * (conditionLeft ? newWidth - imageArt.frame.width : (scrollView.frame.width - scrollView.contentSize.width))
+                let conditioTop = newHeight*scrollView.zoomScale > imageArt.frame.height
+                
+                let top = 0.5 * (conditioTop ? newHeight - imageArt.frame.height : (scrollView.frame.height - scrollView.contentSize.height))
+                
+                scrollView.contentInset = UIEdgeInsets(top: top, left: left, bottom: top, right: left)   
+            } else {
+                scrollView.contentInset = .zero
+            }
+        }
+    }
 }
-
-

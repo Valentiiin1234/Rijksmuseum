@@ -50,6 +50,8 @@ class DetailsViewController: UIViewController {
 
         view.backgroundColor = .white
         imageObject.backgroundColor = .white
+        imageObject.layer.borderWidth = 1
+        imageObject.layer.borderColor = UIColor.black.cgColor
 
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
@@ -80,6 +82,7 @@ class DetailsViewController: UIViewController {
         scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
+       
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
